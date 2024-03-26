@@ -9,10 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const pg_1 = require("pg");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const client = new pg_1.Client({
-    connectionString: "postgresql://neerajwdev:SHFZwc53yNOM@ep-spring-firefly-28443111.ap-southeast-1.aws.neon.tech/backendtest?sslmode=require",
+    connectionString: process.env.DATABASE_URL,
 });
 function createUserTable() {
     return __awaiter(this, void 0, void 0, function* () {
